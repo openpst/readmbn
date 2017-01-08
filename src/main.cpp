@@ -1,3 +1,12 @@
+/**
+* LICENSE PLACEHOLDER
+*
+* @file main.cpp
+* @package openpst/readmbn
+* @brief CLI tool for reading and display information about files in Qualcomm mbn format
+*
+* @author Gassan Idriss <ghassani@gmail.com>
+*/
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -30,14 +39,12 @@ int main(int argc, char* argv[])
 		
 		CmdLine args("readmbn", ' ', "1.0");    	
     	UnlabeledValueArg<std::string> filePathArg("file", "MBN file to read", true, ""," string");
-    	ValueArg<std::string> extractArg("e", "extract", "Extract a segement to out file [-o|--out]. One of code, signature, x509", false, "", "string");
+    	ValueArg<std::string> extractArg("e", "extract", "Extract a segement to out file [-o|--out]. One of code, signature, x509 (x509 is in DER format)", false, "", "string");
     	ValueArg<std::string> outArg("o", "out", "Out file, required if extract option is used", false, "", "string");
-    	SwitchArg parseX509Flag("x","parse-x509","Parse x509 certificate if available", false);
    
 		args.add(filePathArg);
 		args.add(extractArg);
 		args.add(outArg);
-		args.add(parseX509Flag);
 
 		args.parse(argc, argv);
 
@@ -110,9 +117,7 @@ int main(int argc, char* argv[])
 			outFile.close();
 
 			std::cout << "Wrote " << written << " bytes to " << outArg.getValue() << std::endl;
-
 		}
-
 
 	} catch (ArgException &e) {
 		std::cerr << "Error parsing arguments: " << e.error() << " for argument " << e.argId() << std::endl;
