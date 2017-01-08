@@ -1,0 +1,8 @@
+[submodule "lib/libopenpst"]
+	path = lib/libopenpst
+	url = https://github.com/openpst/libopenpst
+	branch = master
+[submodule "lib/tclap"]
+	path = lib/tclap
+	url = https://github.com/mirror/tclap
+	branch = master
