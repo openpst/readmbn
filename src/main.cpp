@@ -52,15 +52,11 @@ int main(int argc, char* argv[])
 
 		int flags = 0;
 
-		if (parseX509Flag.getValue() || extractArg.getValue().compare("x509") == 0) {
+		if (extractArg.getValue().compare("x509") == 0) {
 			flags |= kMbnParserFlagExtractX509;
-		}	
-
-		if (extractArg.getValue().compare("code") == 0) {
+		} else if (extractArg.getValue().compare("code") == 0) {
 			flags |= kMbnParserFlagExtractCode;
-		}
-
-		if (extractArg.getValue().compare("signature") == 0) {
+		} else if (extractArg.getValue().compare("signature") == 0) {
 			flags |= kMbnParserFlagExtractSignature;
 		}
 
