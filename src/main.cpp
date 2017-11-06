@@ -134,7 +134,7 @@ int main(int argc, char* argv[])
 
 	} catch (ArgException &e) {
 		std::cerr << "Error parsing arguments: " << e.error() << " for argument " << e.argId() << std::endl;
-	} catch (MbnParserException &e) {
+	} catch (MbnParserError &e) {
 		std::cerr << "Error parsing: " << e.what() << std::endl;
 	}
 
